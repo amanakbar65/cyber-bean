@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cyber Bean</title>
+<meta name="description" content="Cyber Bean is a specialty coffee bar on Neon Row. Single-origin espresso, cold brew and late-night pastries, served until 2 AM.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307060d'/%3E%3Cellipse cx='32' cy='32' rx='14' ry='20' fill='none' stroke='%23ff3d9a' stroke-width='4' transform='rotate(-30 32 32)'/%3E%3Cpath d='M26 18c8 8 4 20 12 28' fill='none' stroke='%233df2ff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Tilt+Neon&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#menu">Skip to menu</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__inner">
+    <a class="logo" href="#top" aria-label="Cyber Bean home">
+      <svg class="logo__mark" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="32" rx="14" ry="20" transform="rotate(-30 32 32)"/><path d="M26 18c8 8 4 20 12 28"/></svg>
+      <span>Cyber<b>Bean</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#lab">Brew Lab</a>
+      <a href="#beans">Beans</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="nav__right">
+      <span class="status-pill" id="navStatus" aria-live="polite"><i></i><span>Checking hours</span></span>
+      <button class="cart-btn" id="cartOpen" type="button" aria-haspopup="dialog" aria-controls="cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.7h-7a2 2 0 0 1-2-1.7L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span>Order</span>
+        <span class="cart-btn__count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Specialty coffee · Sector 7, Neon Row</p>
+        <h1 class="sign" aria-label="Cyber Bean">
+          <span class="sign__a">Cyber</span>
+          <span class="sign__b">B<span class="sign__buzz">e</span>an</span>
+        </h1>
+        <p class="hero__lede">Single-origin espresso, slow-drip cold brew and pastries baked at midnight. Pulled hot from 7 AM until 2 AM, for the people who keep the city running.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#menu">Order ahead</a>
+          <a class="btn btn--ghost" href="#lab">Build a custom drink</a>
+        </div>
+      </div>
+
+      <div class="hero__machine">
+        <svg class="cup" viewBox="0 0 240 240" aria-hidden="true">
+          <g class="cup__steam">
+            <path d="M92 70c-10-14 10-22 0-38"/>
+            <path d="M120 64c-12-16 12-24 0-44"/>
+            <path d="M148 70c-10-14 10-22 0-38"/>
+          </g>
+          <path class="cup__body" d="M58 92h124l-10 88a18 18 0 0 1-18 16H86a18 18 0 0 1-18-16Z"/>
+          <path class="cup__handle" d="M180 108h10a22 22 0 0 1 0 44h-14"/>
+          <path class="cup__saucer" d="M34 210h172"/>
+          <path class="cup__crema" d="M64 104c18 8 94 8 112 0"/>
+        </svg>
+
+        <div class="terminal" role="group" aria-label="Espresso machine readout">
+          <div class="terminal__bar"><span>BAR-01 · La Linea</span><span class="terminal__live">Live</span></div>
+          <dl class="terminal__rows">
+            <div><dt>Boiler</dt><dd><span id="tBoiler">93.2</span> °C</dd></div>
+            <div><dt>Pressure</dt><dd><span id="tBar">9.0</span> bar</dd></div>
+            <div><dt>Dose / yield</dt><dd>18.0 g → 36.0 g</dd></div>
+            <div><dt>Shots pulled today</dt><dd id="tShots">412</dd></div>
+            <div><dt>Queue</dt><dd><span id="tQueue">3</span> orders · ~<span id="tWait">6</span> min</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-label="On the grinders this week">
+    <div class="ticker__track">
+      <span>Ethiopia Yirgacheffe · 1,950 MASL · Washed</span>
+      <span>Colombia Huila · 1,700 MASL · Honey</span>
+      <span>Sumatra Gayo · 1,400 MASL · Wet-hulled</span>
+      <span>Espresso ratio 1:2 · 27 s · 93 °C</span>
+      <span>Cold brew steeped 18 h at 4 °C</span>
+      <span aria-hidden="true">Ethiopia Yirgacheffe · 1,950 MASL · Washed</span>
+      <span aria-hidden="true">Colombia Huila · 1,700 MASL · Honey</span>
+      <span aria-hidden="true">Sumatra Gayo · 1,400 MASL · Wet-hulled</span>
+      <span aria-hidden="true">Espresso ratio 1:2 · 27 s · 93 °C</span>
+      <span aria-hidden="true">Cold brew steeped 18 h at 4 °C</span>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow eyebrow--cyan">The menu</p>
+          <h2>Pulled, poured, overclocked.</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Menu categories" id="menuTabs">
+          <button role="tab" type="button" aria-selected="true" data-cat="all">All</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="espresso">Espresso</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="cold">Cold</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="signature">Signature</button>
+          <button role="tab" type="button" aria-selected="false" data-cat="bites">Bites</button>
+        </div>
+      </div>
+      <div class="menu-grid" id="menuGrid" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- BREW LAB -->
+  <section class="section section--lab" id="lab">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow eyebrow--magenta">Brew Lab</p>
+          <h2>Build your drink.</h2>
+        </div>
+        <p class="section__note">Choose a base, add shots, milk and syrup. We brew it exactly as specced.</p>
+      </div>
+
+      <div class="lab">
+        <form class="lab__controls" id="labForm">
+          <fieldset>
+            <legend>Base</legend>
+            <div class="seg">
+              <label><input type="radio" name="base" value="espresso" id="base-espresso" checked><span>Espresso</span></label>
+              <label><input type="radio" name="base" value="coldbrew" id="base-coldbrew"><span>Cold brew</span></label>
+              <label><input type="radio" name="base" value="matcha" id="base-matcha"><span>Matcha</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Size</legend>
+            <div class="seg">
+              <label><input type="radio" name="size" value="S" id="size-s"><span>S · 8 oz</span></label>
+              <label><input type="radio" name="size" value="M" id="size-m" checked><span>M · 12 oz</span></label>
+              <label><input type="radio" name="size" value="L" id="size-l"><span>L · 16 oz</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="lab__row">
+            <legend>Extra shots</legend>
+            <div class="stepper">
+              <button type="button" id="shotsDown" aria-label="Remove a shot">−</button>
+              <output id="shotsOut" aria-live="polite">0</output>
+              <button type="button" id="shotsUp" aria-label="Add a shot">+</button>
+            </div>
+            <p class="hint" id="shotsHint">Double shot included. Each extra shot adds 63 mg of caffeine.</p>
+          </fieldset>
+
+          <fieldset>
+            <legend>Milk</legend>
+            <div class="seg seg--4">
+              <label><input type="radio" name="milk" value="none" id="milk-none"><span>None</span></label>
+              <label><input type="radio" name="milk" value="whole" id="milk-whole"><span>Whole</span></label>
+              <label><input type="radio" name="milk" value="oat" id="milk-oat" checked><span>Oat</span></label>
+              <label><input type="radio" name="milk" value="coconut" id="milk-coconut"><span>Coconut</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Syrup</legend>
+            <div class="seg seg--4">
+              <label><input type="radio" name="syrup" value="none" id="syrup-none"><span>None</span></label>
+              <label><input type="radio" name="syrup" value="vanilla" id="syrup-vanilla" checked><span>Neon vanilla</span></label>
+              <label><input type="radio" name="syrup" value="sesame" id="syrup-sesame"><span>Black sesame</span></label>
+              <label><input type="radio" name="syrup" value="yuzu" id="syrup-yuzu"><span>Yuzu</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Serve</legend>
+            <div class="seg">
+              <label><input type="radio" name="temp" value="hot" id="temp-hot" checked><span>Hot</span></label>
+              <label><input type="radio" name="temp" value="iced" id="temp-iced"><span>Iced</span></label>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="lab__preview">
+          <div class="glass" id="glass" aria-hidden="true">
+            <div class="glass__fill" id="glassFill"></div>
+            <div class="glass__ice" id="glassIce"><i></i><i></i><i></i></div>
+          </div>
+          <div class="readout">
+            <p class="readout__label">Your build</p>
+            <p class="readout__name" id="buildName">Oat Vanilla Latte</p>
+            <p class="readout__spec" id="buildSpec">Double espresso · oat · neon vanilla · hot · 12 oz</p>
+            <dl class="readout__stats">
+              <div><dt>Caffeine</dt><dd id="buildCaf">126 mg</dd></div>
+              <div><dt>Energy</dt><dd id="buildCal">210 kcal</dd></div>
+              <div><dt>Price</dt><dd id="buildPrice">$5.25</dd></div>
+            </dl>
+            <button class="btn btn--primary btn--block" type="button" id="buildAdd">Add to order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEANS -->
+  <section class="section" id="beans">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow eyebrow--crema">On the grinders</p>
+          <h2>Three origins, roasted in-house every Tuesday.</h2>
+        </div>
+        <p class="section__note">We buy direct from the farms below and roast 12 kg batches upstairs. Bags are $19 for 250 g.</p>
+      </div>
+
+      <div class="beans">
+        <article class="bean">
+          <header>
+            <p class="bean__origin">Ethiopia</p>
+            <h3>Yirgacheffe Kochere</h3>
+          </header>
+          <p class="bean__notes">Jasmine, bergamot, white peach</p>
+          <dl class="bean__data">
+            <div><dt>Altitude</dt><dd>1,950 m</dd></div>
+            <div><dt>Process</dt><dd>Washed</dd></div>
+            <div><dt>Cup score</dt><dd>88.5</dd></div>
+          </dl>
+          <div class="roast" style="--roast:22%"><span>Roast</span><div class="roast__bar"><i></i></div><span>Light</span></div>
+        </article>
+        <article class="bean">
+          <header>
+            <p class="bean__origin">Colombia</p>
+            <h3>Huila La Esperanza</h3>
+          </header>
+          <p class="bean__notes">Red apple, panela, cocoa nib</p>
+          <dl class="bean__data">
+            <div><dt>Altitude</dt><dd>1,700 m</dd></div>
+            <div><dt>Process</dt><dd>Honey</dd></div>
+            <div><dt>Cup score</dt><dd>86.75</dd></div>
+          </dl>
+          <div class="roast" style="--roast:50%"><span>Roast</span><div class="roast__bar"><i></i></div><span>Medium</span></div>
+        </article>
+        <article class="bean">
+          <header>
+            <p class="bean__origin">Sumatra</p>
+            <h3>Gayo Highlands</h3>
+          </header>
+          <p class="bean__notes">Cedar, dark chocolate, clove</p>
+          <dl class="bean__data">
+            <div><dt>Altitude</dt><dd>1,400 m</dd></div>
+            <div><dt>Process</dt><dd>Wet-hulled</dd></div>
+            <div><dt>Cup score</dt><dd>85.25</dd></div>
+          </dl>
+          <div class="roast" style="--roast:78%"><span>Roast</span><div class="roast__bar"><i></i></div><span>Dark</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACE -->
+  <section class="section section--space">
+    <div class="wrap space">
+      <div class="space__copy">
+        <p class="eyebrow eyebrow--cyan">The space</p>
+        <h2>Open late, with power at every seat.</h2>
+        <p>Cyber Bean sits under the elevated rail on Neon Row. There are 40 seats, a long counter facing the street and a quiet booth room at the back. Coders, night-shift nurses and people who just can't sleep all end up here.</p>
+      </div>
+      <ul class="perks">
+        <li><strong>1 Gbps</strong><span>Fibre Wi-Fi, no time limit</span></li>
+        <li><strong>40</strong><span>Seats, each with USB-C and a plug</span></li>
+        <li><strong>2 AM</strong><span>Last orders Friday and Saturday</span></li>
+        <li><strong>0 g</strong><span>Single-use plastic behind the bar</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="section" id="visit">
+    <div class="wrap visit">
+      <div class="visit__info">
+        <p class="eyebrow eyebrow--magenta">Visit</p>
+        <h2>Find the pink glow under the rail.</h2>
+        <address>
+          404 Neon Row, Sector 7<br>
+          Under the Line 3 overpass, next to the noodle bar
+        </address>
+        <p class="visit__status" id="visitStatus" aria-live="polite">Checking hours…</p>
+        <div class="visit__contact">
+          <p><span>Phone</span> <span class="mono">(555) 010-2077</span></p>
+          <p><span>Email</span> <span class="mono">hello@cyberbean.cafe</span></p>
+        </div>
+      </div>
+      <div class="hours">
+        <h3>Hours</h3>
+        <table>
+          <tbody id="hoursBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__join">
+      <h2>Join the Bean Net</h2>
+      <p>One email a month: new origins, roast days and after-hours events. No spam.</p>
+      <form class="join" id="joinForm" novalidate>
+        <label class="sr-only" for="joinEmail">Email address</label>
+        <input type="email" id="joinEmail" name="email" placeholder="you@domain.net" autocomplete="email" required>
+        <button class="btn btn--primary" type="submit">Subscribe</button>
+      </form>
+      <p class="join__msg" id="joinMsg" role="status"></p>
+    </div>
+    <div class="footer__meta">
+      <a class="logo" href="#top"><svg class="logo__mark" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="32" rx="14" ry="20" transform="rotate(-30 32 32)"/><path d="M26 18c8 8 4 20 12 28"/></svg><span>Cyber<b>Bean</b></span></a>
+      <p>© 2026 Cyber Bean Coffee Co. Roasted in Sector 7.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="cart" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
+  <div class="cart__head">
+    <h2 id="cartTitle">Your order</h2>
+    <button class="icon-btn" type="button" id="cartClose" aria-label="Close order">×</button>
+  </div>
+
+  <div class="cart__body" id="cartBody">
+    <ul class="cart__list" id="cartList"></ul>
+    <p class="cart__empty" id="cartEmpty">Your order is empty. Add something from the menu or build a drink in the Brew Lab.</p>
+  </div>
+
+  <form class="cart__foot" id="checkoutForm" novalidate>
+    <dl class="cart__totals">
+      <div><dt>Subtotal</dt><dd id="cartSub">$0.00</dd></div>
+      <div><dt>Tax (8%)</dt><dd id="cartTax">$0.00</dd></div>
+      <div class="cart__total"><dt>Total</dt><dd id="cartTotal">$0.00</dd></div>
+    </dl>
+    <div class="field">
+      <label for="pickupName">Name for pickup</label>
+      <input id="pickupName" name="name" type="text" autocomplete="given-name" placeholder="e.g. Kai" required>
+    </div>
+    <div class="field">
+      <label for="pickupTime">Pickup</label>
+      <select id="pickupTime" name="time">
+        <option value="asap">As soon as it's ready</option>
+        <option value="15">In 15 minutes</option>
+        <option value="30">In 30 minutes</option>
+      </select>
+    </div>
+    <p class="field__error" id="checkoutError" role="alert"></p>
+    <button class="btn btn--primary btn--block" type="submit" id="checkoutBtn">Place order</button>
+  </form>
+
+  <div class="confirm" id="confirm" hidden>
+    <p class="eyebrow eyebrow--cyan">Order received</p>
+    <p class="confirm__code" id="confirmCode">CB-0000</p>
+    <p class="confirm__msg" id="confirmMsg"></p>
+    <ol class="progress" id="progress">
+      <li>Received</li>
+      <li>Grinding</li>
+      <li>Pulling</li>
+      <li>Ready</li>
+    </ol>
+    <button class="btn btn--ghost btn--block" type="button" id="newOrder">Start a new order</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
